@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>rest</artifactId>
+	<packaging>jar</packaging>
+
+	<name>PetStoreDemoRest</name>
+	<description>Demo project for Pet Store Demo REST </description>
+
+	<parent>
+		<groupId>com.example.demo.pet-store</groupId>
+		<artifactId>parent</artifactId>
+		<relativePath>../</relativePath>
+		<version>1.0.0</version>
+	</parent>
+
+	<properties>
+		<selenium.version>2.53.1</selenium.version>
+		<scm-plugin.version>1.9.5</scm-plugin.version>
+	</properties>
+
+	<scm>
+		<connection>scm:git:file:///media/igor/BDISK/GitRepo/PetDemoUi</connection>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.example.rest.common.security</groupId>
+			<artifactId>services</artifactId>
+			<version>1.0.0-RELEASE</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>qa</id>
+
+			<properties>
+				<skipTests>false</skipTests>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.example.demo.pet-store</groupId>
+					<artifactId>qa-services</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+
+				<dependency>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+					<scope>test</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-firefox-driver</artifactId>
+					<scope>test</scope>
+				</dependency>
+
+				<dependency>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-server</artifactId>
+					<version>${selenium.version}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<finalName>${artifactId}-qa-${version}</finalName>
+			</build>
+		</profile>
+
+		<profile>
+			<id>release</id>
+
+			<properties>
+				<skipTests>true</skipTests>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.example.rest.common.security</groupId>
+					<artifactId>common</artifactId>
+					<version>${common-security.version}</version>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<finalName>${artifactId}-secure-${version}</finalName>
+			</build>
+		</profile>
+	</profiles>
+</project>
