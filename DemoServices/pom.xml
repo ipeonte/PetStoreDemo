@@ -42,6 +42,7 @@
 	</dependencies>
 
 	<modules>
+		<module>CommonSecurity</module>
 		<module>PetStoreDemoQaServices</module>
 		<module>PetStoreDemoRest</module>
 		<module>PetStoreDemoAuthServer</module>
