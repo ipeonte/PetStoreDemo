@@ -6,7 +6,7 @@
 	<artifactId>core</artifactId>
 	<packaging>jar</packaging>
 
-	<name>security-core</name>
+	<name>SecurityCore</name>
 
 	<description>Core Security library that uses Spring Sessions. Used both by Authentication Server and Common Security layer for each Rest Web Service</description>
 

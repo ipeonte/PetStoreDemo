@@ -6,7 +6,7 @@
 	<artifactId>common</artifactId>
 	<packaging>jar</packaging>
 
-	<name>CommonSecurity</name>
+	<name>SecurityCommon</name>
 
 	<description>Common Security Library with Spring Session security configuration parameters.
 Needs to be added into each Rest Web Service where security required.</description>
@@ -19,7 +19,12 @@ Needs to be added into each Rest Web Service where security required.</descripti
 	</parent>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>com.example.rest.common.security</groupId>
+			<artifactId>services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.example.rest.common.security</groupId>
 			<artifactId>core</artifactId>
